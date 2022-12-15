@@ -39,7 +39,12 @@
             <div class="container">
                 <div class="hero-text">
                     <h3>Hi, There!</h3>
-                    <h1>I Am <span class="input"></span></h1>
+                    <h1 class="im">I Am</h1>
+                    <h1 class="animate-text">
+                        <span>Rana Pratap</span>
+                        <span>a Python Dev.</span>
+                        <span>a Django Dev.</span>
+                    </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur eius repudiandae recusandae. Sapiente suscipit atque, vero eum at, esse doloribus quaerat beatae ab asperiores, qui numquam tempora a facere animi.</p>
                     <div class="social">
                         <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
@@ -61,12 +66,29 @@
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
-        var typed = new Typed(".input",{
-            strings:["Rana Pratap.","a Python Developer","a Django Developer"],
-            typeSpeed: 70,
-            backSpeed: 60,
-            loop: true
-        });
+            const texts = document.querySelector(".animate-text").children,
+                textLen = texts.length;
+            let index = 0;
+
+            function animateText(){
+
+                for(let i=0; i<textLen; i++){
+                    texts[i].classList.remove("text-in");
+                }
+
+                texts[index].classList.add("text-in");
+
+                if(index == textLen-1){
+                    index = 0;
+                }
+                else{
+                    index++;
+                }
+
+                setTimeout(animateText, 3000);
+            }
+
+            window.onload = animateText;
     </script>
 </body>
 </html>
